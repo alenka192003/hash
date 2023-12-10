@@ -1,15 +1,15 @@
 import java.util.Iterator;
 import java.util.LinkedList;
 public class HashTable<K, V> implements Iterable<KeyValue<K, V>> {
-    private static final int INITIAL_CAPACITY = 16;
+    private static final int CAPACITY = 16;
     private static final double LOAD_FACTOR = 0.80d;
     private LinkedList<KeyValue<K, V>>[] table;
     private int size;
     private int capacity;
     public HashTable() {
-        this.table = new LinkedList[INITIAL_CAPACITY];
+        this.table = new LinkedList[CAPACITY];
         this.size = 0;
-        this.capacity = INITIAL_CAPACITY;
+        this.capacity = CAPACITY;
     }
     public void add(K key, V value) {
         growIfNeeded();
@@ -106,9 +106,9 @@ public class HashTable<K, V> implements Iterable<KeyValue<K, V>> {
     }
 
     public void clear() {
-        table = new LinkedList[INITIAL_CAPACITY];
+        table = new LinkedList[CAPACITY];
         size = 0;
-        capacity = INITIAL_CAPACITY;
+        capacity = CAPACITY;
     }
 
     public Iterable<K> keys() {
@@ -145,4 +145,20 @@ public class HashTable<K, V> implements Iterable<KeyValue<K, V>> {
         }
         return allEntries.iterator();
     }
+    @Override
+    public String toString() {
+        StringBuilder result = new StringBuilder("[\n");
+
+        for (LinkedList<KeyValue<K, V>> list : table) {
+            if (list != null) {
+                for (KeyValue<K, V> entry : list) {
+                    result.append("  ").append(entry).append("\n");
+                }
+            }
+        }
+
+        result.append("]\n");
+        return result.toString();
+    }
 }
+//Таким образом, проблема коллизий решается за счет использования связанных списков, где каждая ячейка массива содержит не один элемент, а целый связанный список элементов с одинаковым хэш-кодом.

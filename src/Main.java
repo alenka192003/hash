@@ -9,6 +9,9 @@ public class Main {
         hashTable.add("two", 2);
         hashTable.add("three", 3);
         hashTable.add("four", 4);
+        hashTable.add("nine", 9);
+        hashTable.add("ten", 10);
+
 
         // Вывод размера и емкости
         System.out.println("Size: " + hashTable.size());
@@ -20,10 +23,10 @@ public class Main {
         // Замена значения по ключу
         hashTable.addOrReplace("two", 22);
         System.out.println("Updated value for key 'two': " + hashTable.get("two"));
+        hashTable.add("two", 2);
+        hashTable.add("five", 5);
 
-        // Поиск элемента по ключу
-        KeyValue<String, Integer> keyValue = hashTable.find("three");
-        System.out.println("Found element: " + keyValue);
+        hashTable.add("eight", 8);
 
         // Проверка наличия ключа
         System.out.println("Contains key 'five': " + hashTable.containsKey("five"));
@@ -33,8 +36,8 @@ public class Main {
         System.out.println("Size after removal: " + hashTable.size());
 
         // Вывод всех ключей и значений
-        System.out.println("Keys: " + hashTable.keys());
-        System.out.println("Values: " + hashTable.values());
+
+        System.out.println(hashTable);
 
         // Очистка таблицы
         hashTable.clear();
