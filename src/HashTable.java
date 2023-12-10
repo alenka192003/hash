@@ -1,5 +1,8 @@
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedList;
+import java.util.List;
+
 public class HashTable<K, V> implements Iterable<KeyValue<K, V>> {
     private static final int CAPACITY = 16;
     private static final double LOAD_FACTOR = 0.80d;
@@ -37,6 +40,7 @@ public class HashTable<K, V> implements Iterable<KeyValue<K, V>> {
                 }
             }
         }
+        System.out.println("увеличен");
         table = newTable;
     }
     public int size() {return size;}
@@ -57,18 +61,19 @@ public class HashTable<K, V> implements Iterable<KeyValue<K, V>> {
         return false;
     }
 
-    public V get(K key) {
+    public List<V> getAllValuesForKey(K key) {
         int slotNumber = findSlotNumber(key);
         LinkedList<KeyValue<K, V>> list = table[slotNumber];
+        List<V> values = new ArrayList<>();
 
         if (list != null) {
             for (KeyValue<K, V> entry : list) {
                 if (entry.getKey().equals(key)) {
-                    return entry.getValue();
+                    values.add(entry.getValue());
                 }
             }
         }
-        return null;
+        return values;
     }
 
     public KeyValue<K, V> find(K key) {

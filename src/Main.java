@@ -17,38 +17,32 @@ public class Main {
         System.out.println("Size: " + hashTable.size());
         System.out.println("Capacity: " + hashTable.capacity());
 
-        // Получение значения по ключу
-        System.out.println("Value for key 'two': " + hashTable.get("two"));
 
-        // Замена значения по ключу
+
         hashTable.addOrReplace("two", 22);
-        System.out.println("Updated value for key 'two': " + hashTable.get("two"));
+        System.out.println("Updated value for key 'two': " + hashTable.getAllValuesForKey("two"));
         hashTable.add("two", 2);
         hashTable.add("five", 5);
 
         hashTable.add("eight", 8);
-
-        // Проверка наличия ключа
-        System.out.println("Contains key 'five': " + hashTable.containsKey("five"));
-
-        // Удаление элемента по ключу
-        hashTable.remove("four");
-        System.out.println("Size after removal: " + hashTable.size());
-
-        // Вывод всех ключей и значений
+        hashTable.add("nn", 12);
+        hashTable.add("csdc", 13);
+        hashTable.add("dd", 14);
+        hashTable.add("d", 15);
+        hashTable.add("ва", 16);
+        hashTable.add("аыа", 18);
 
         System.out.println(hashTable);
-
-        // Очистка таблицы
+        System.out.println("Value for key 'two': " + hashTable.getAllValuesForKey("two"));
+        System.out.println("Value for key 'one': " + hashTable.getAllValuesForKey("one"));
         hashTable.clear();
         System.out.println("Size after clearing: " + hashTable.size());
 
-        // Добавление элементов после очистки
         hashTable.add("five", 5);
         hashTable.add("six", 6);
 
         // Итерация по элементам
-        System.out.println("Iterating through elements:");
+        System.out.println("Iterator: ");
         Iterator<KeyValue<String, Integer>> iterator = hashTable.iterator();
         while (iterator.hasNext()) {
             KeyValue<String, Integer> entry = iterator.next();
