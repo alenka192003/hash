@@ -24,9 +24,9 @@ public class HashTable<K, V> implements Iterable<KeyValue<K, V>> {
         size++;
     }
     private int findSlotNumber(K key) {return key.hashCode() % capacity;}
-    private void growIfNeeded() {if ((double) size / capacity > LOAD_FACTOR) {grow();}}
+    private void growIfNeeded() {if ((double) (size+1) / capacity > LOAD_FACTOR) {grow();}}
     private void grow() {
-        capacity *= 2;
+        capacity = capacity+1;
         LinkedList<KeyValue<K, V>>[] newTable = new LinkedList[capacity];
 
         for (LinkedList<KeyValue<K, V>> list : table) {
